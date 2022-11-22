@@ -1,19 +1,14 @@
 const express = require('express');
 
 class Server{
+    app = express()
+
     constructor(){
-        this.app = express()
+        this.app.get('/',(req, res) => res.send('Hello World'))
+        this.app.listen(port, () => console.log(`Servidor HTTP port: ${port}`))
         this.routes();
     }
 
-    routes(){
-        this.app.get('/',(req, res) => res.send('Hello World'))
-    }
-
-    listen(){
-        this.app.listen(process.env.PORT,()=>
-            console.log("El puerto esta corriendo el puerto TCP" + process.env.PORT))
-    }
 }
 
-module.exports = Server
+module.exports = Server;
